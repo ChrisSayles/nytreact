@@ -1,12 +1,32 @@
+//required dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
+
+//------------------Set up of our MongoDB configuration----------------------------
+mongoose.connect("mongodb://localhost/nytreact");
+
+// Establish connection with database
+
+var db = mongoose.connection;
+
+//if there is an error connecting to DB console.log the error
+db.on('error', function(err){
+  console.log("Mongoose Error", err);
+});
+//if connection successful console.log "connetion successful"
+db.once('open', function(){
+  console.log("Mongoose connection successful.");
+});
+
+//---------------------Required Schema-----------------------------------------------
 var Article = require('./models/articles.js');
 
+//---------------------Express Server Setup -----------------------------------------
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -17,52 +37,49 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(express.static('./public'));
 
 
-// Establish connection with database
-// mongoose.connect('mongodb://localhost/nytreact');
-mongoose.connect('mongodb://heroku_j438z0bc:9n4277n07uqc047groqsafqb66@ds019796.mlab.com:19796/heroku_j438z0bc');
-var db = mongoose.connection;
+
+//------------------------------------Routes------------------------------------------
 
 
-db.on('error', function(err){
-	console.log("Mongoose Error", err);
-});
-
-db.once('open', function(){
-	console.log("Mongoose connection successful.");
-});
-
-
-
+//---------Route to the main page AKA Index-------------------------------
 app.get('/', function(req,res){
 	res.sendFile('./public/index.html');
 });
 
 
-
-app.get('/api/', function(req,res){
+//--------Route that will get our saved articles---------------------------
+app.get('/api/saved', function(req,res){
   Article.find({})
-    .exec(function(err,doc){
-      if (err){
-        console.log(err);
-      }else{
-        res.send(doc);
-      }
-    })
+  .exec(function(err,doc){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.send(doc.id);
+    }
+  });
 });
 
+//--------Route that will be used to add an article to our saved list-------
+app.post('/api/saved', function(req, res){
 
-app.post('/api/', function(req, res){
-  // var newSearch = new Article(req.body);
-  // console.log("BODY: " + req.body);
+  var newArticle = new Article({
+    title: req.body.title,
+    date: req.body.date,
+    url: req.body.url
+  });
 
-  Article.create({"title": req.body.headline.main, "url": req.body.web_url,"date": Date.now()}, function(err){
-  	if(err){
-  		console.log(err);
-  	}else{
-  		console.log("saved the search!");
-  	}
-  })
+  newArticle.save(function(err, doc){
+    if(err){
+      console.log(err);
+      res.send(err);
+    } else {
+      res.json(doc);
+    }
+  });
+
 });
+
 
 
 app.listen(PORT, function(){

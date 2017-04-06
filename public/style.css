@@ -1,0 +1,33 @@
+.bgHeadColor {
+	content:url("nytlogo.png");
+	color:red;
+	width: 100%;
+	padding-left:10%;
+	padding-right:10%;
+};
+
+.submitButton{
+	text-align: center
+};
+
+.topicBG{
+	background-color: red;
+}
+
+.search-bar{
+	text-align: center;
+}
+
+.search-button{
+  top: 60%;
+  text-align: center;
+  width: 100%;
+  font-family: 'Tangerine', cursive;
+  font-size:25px;
+  font-weight: bold;
+}
+
+.title-bar{
+	background-color: black;
+	color: white;
+}
