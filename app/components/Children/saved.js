@@ -27,8 +27,8 @@ var Saved = React.createClass({
 
     return(
 
-      <div className="panel panel-success">
-        <div className="panel-heading">
+      <div className="panel panel-primary-yellow ">
+        <div className="panel-body-search">
           <h3 className="panel-title text-center"><strong>Saved Articles</strong></h3>
         </div>
         <div className="panel-body">

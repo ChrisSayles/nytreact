@@ -38,11 +38,11 @@ var Search = React.createClass({
 
     return(
 
-      <div className="panel panel-primary">
-        <div className="panel-heading">
-          <h2 className="panel-title text-center"><strong>Search</strong></h2>
+      <div className="panel panel-primary-yellow ">
+        <div className="panel-body-search">
+          <h2 className="panel-title text-center panel-primary-yellow"><strong>Search</strong></h2>
         </div>
-        <div className="panel-body text-center">
+        <div className="panel-body-search text-center">
 
             <form>
               <div className="form-group">
@@ -58,7 +58,7 @@ var Search = React.createClass({
                 <input type="text" className="form-control text-center" id="endYear" onChange= {this.handleChange} required/>
                 <br />
                 
-                <button type="button" className="btn btn-primary" onClick={this.handleClick}>Search</button>
+                <button type="button" className="btn btn-success search-button" onClick={this.handleClick}>Search</button>
               </div>
 
             </form>

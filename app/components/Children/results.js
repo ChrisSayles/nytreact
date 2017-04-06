@@ -30,8 +30,8 @@ var Results = React.createClass({
 	//render function that will be displayed via Main.js
 	render: function(){
 		return(
-			<div className = "panel panel-warning">
-			 <div className = "panel-heading">
+			<div className="panel panel-primary-yellow ">
+        <div className="panel-body-search">
 			 	<h3 className = "panel-title text-center"><strong>Results</strong></h3>
 			 </div>
 			 <div className ="panel-body">

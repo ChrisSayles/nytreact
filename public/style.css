@@ -4,6 +4,9 @@
 	width: 100%;
 	padding-left:10%;
 	padding-right:10%;
+    border-bottom-color: black;
+    border-bottom-style: double;
+    border-bottom-width:11px;
 };
 
 .submitButton{
@@ -30,4 +33,36 @@
 .title-bar{
 	background-color: black;
 	color: white;
+}
+
+
+
+.panel-primary>.panel-heading{
+	background-color: #e3e3e3;
+	border-color: #e3e3e3;
+	border-color: #fe8f02;
+}
+
+.panel-warning>.panel-heading{
+	background-color: #e3e3e3;
+	border-color: #e3e3e3;
+	color: white;
+}
+
+.panel-success>.panel-heading {
+    color: white;
+    background-color: #e3e3e3;
+	border-color: #e3e3e3;
+}
+
+.panel-body-search{
+	padding: 15px;
+	border-color: black;
+	border-style: solid;
+	border-width: 8px;
+}	
+
+.panel-primary-yellow{
+	border-color: #fe8f02;
+	border-width: 4px;
 }
