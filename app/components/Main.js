@@ -42,6 +42,7 @@ var Main = React.createClass({
     helpers.postArticle(title, date, url);
     this.getArticle();
 
+
   },
   // deleteArticle causes axios request to delete Article and reset the state of savedArticles and bind to this.
   deleteArticle: function(article){
@@ -123,7 +124,8 @@ var Main = React.createClass({
 
         <div className="row">
         
-          <Saved savedArticles={this.state.savedArticles} deleteArticle={this.deleteArticle} />
+          <Saved savedArticles={this.state.savedArticles}/>
+
 
         </div>
       </div>

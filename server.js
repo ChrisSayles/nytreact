@@ -48,16 +48,19 @@ app.get('/', function(req,res){
 
 
 //--------Route that will get our saved articles---------------------------
-app.get('/api/saved', function(req,res){
+
+app.get('/api/saved', function(req, res) {
+
   Article.find({})
-  .exec(function(err,doc){
-    if(err){
-      console.log(err);
-    }
-    else{
-      res.send(doc.id);
-    }
-  });
+    .exec(function(err, doc){
+
+      if(err){
+        console.log(err);
+      }
+      else {
+        res.send(doc);
+      }
+    })
 });
 
 //--------Route that will be used to add an article to our saved list-------
@@ -79,6 +82,8 @@ app.post('/api/saved', function(req, res){
   });
 
 });
+
+
 
 
 
