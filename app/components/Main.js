@@ -122,12 +122,6 @@ var Main = React.createClass({
 
         </div>
 
-        <div className="row">
-        
-          <Saved savedArticles={this.state.savedArticles}/>
-
-
-        </div>
       </div>
     )
   }
